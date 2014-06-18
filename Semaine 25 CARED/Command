@@ -1,0 +1,30 @@
+https://github.com/
+
+Lors de l'installation de GIT 
+	- Use git from the Windows Command Prompt
+
+Cmder
+	git --version 
+	> git version 1.9.4.msysgit.0
+
+	git init : initialise un projet
+
+	git clone <url> : Récupération d'un projet
+	git add -A : ajoute tous les nouveaux élements pour un future commit
+	git add index.php : ajoute index.php pour un future commit
+	
+	git remote -v : liste les liaisons avec le repository distant
+
+	git remote rm : supprime les liaisons avec le repository distant
+	git remote add origin <url> : ajoute une liaison avec un repository distant
+	git remote set-url origin <url> : modifie la liaison avec le repository distant
+
+	git config --global user.mail "<email>" : Configure en global le mail de l'utilisateur de GIT
+	git config --global user.name "<name>" : Configure en global le name de l'utilisateur de GIT
+
+	git push origin master : Pousser les commits local vers le distant
+	git pull origin master : Tirer les commits distant vers le origin
+
+
+
+	
