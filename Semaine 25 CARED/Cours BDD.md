@@ -77,4 +77,8 @@ Une base de données est un conteneur servant à stocker des données2: des rens
   - PowerAMC
   - SQL Server
 
+## Command
+
+CREATE DATABASE db_name; => Création d'une base de donnée
+
  
