@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Web development</title>
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" type="text/css" href="bower_components/prism/themes/prism-tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <!-- endbuild-->
+  </head>
+  <body>
+    <article>
+      <section>
+        <h1>Programmation web</h1>
+      </section>
+      <section>
+        <h2>Langage de programmation</h2>
+        <h3 class="bullet">4 langages principaux</h3>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>PHP</li>
+          <li>SQL</li>
+        </ul>
+      </section>
+      <section>
+        <h2>HTML</h2>
+        <h3>Langage structurel</h3>
+        <hr>
+      </section>
+      <section>
+        <h2>TD 1</h2>
+        <h3 class="bullet">Formulaire HTML</h3>
+        <ul>
+          <li>Input : Nom</li>
+          <li>Input : Prenom</li>
+          <li>Input : Submit</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Correction</h2>
+        <h3>Formulaire HTML
+          <pre><code class="language-markup">&lt;form method=&quot;POST&quot; action=&quot;valid.php&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;nom&quot;/&gt;
+  &lt;input type=&quot;text&quot; name=&quot;prenom&quot;/&gt;
+  &lt;input type=&quot;submit&quot; name=&quot;save&quot;/&gt;
+&lt;/form&gt;
+</code></pre>
+        </h3>
+      </section>
+      <section>
+        <h2>CSS</h2>
+        <h3>Langage de présentation</h3>
+      </section>
+      <section>
+        <h2>PHP</h2>
+        <h3>Langage interprété</h3>
+      </section>
+      <section>
+        <h2>TD 1</h2>
+        <h3 class="bullet">Récupération des données</h3>
+        <ul>
+          <li>Analyse du Formulaire</li>
+          <li>Récupération des données</li>
+          <li>Validation des données</li>
+          <li>Gestion des erreurs</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Correction</h2>
+      </section>
+      <section>
+        <h2 class="bullet">Analyse du Formulaire</h2>
+        <ul>
+          <li>Method : Post</li>
+          <li>Action : valid.php</li>
+          <li>Input name : nom</li>
+          <li>Input name : prenom</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Récupération des données</h2>
+        <pre><code class="language-javascript">$data = $_POST;
+</code></pre>
+      </section>
+      <section>
+        <h2 class="bullet">Validation des données</h2>
+        <ul>
+          <li>Vérification du contenu de $data</li>
+          <li>Vérification du contenu des éléments input</li>
+          <li>En cas d'erreur ajouter dans un tableau un message</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Vérification du contenu de $post</h3>
+        <hr>
+        <pre><code class="language-javascript">if (empty($data)){
+  $errMessages[] = "Aucun formulaire";
+}
+</code></pre>
+      </section>
+      <section>
+        <h3>Vérification de l'existence</h3>
+        <hr>
+        <pre><code class="language-javascript">if (!isset($data['nom']) OR empty($data['nom'])) {
+  $errMessages[] = "Nom Obligatoire";
+}
+</code></pre>
+      </section>
+      <section>
+        <h3>Vérification du contenu de l'élément</h3>
+        <hr>
+        <pre><code class="language-javascript">if (preg_match('/[^A-Za-z]/', $data['nom'])) {
+  $errMessages[] = "Nom Incorrect";
+}
+</code></pre>
+      </section>
+      <section data-bespoke-state="emphatic">
+        <h2>SQL</h2>
+        <h3>Langage de Base de données</h3>
+        <h3>Accès phpMyAdmin <a href="pma.project.dev">pma.project.dev</a></h3>
+        <p>Crée une base de données avec phpMyAdmin</p>
+        <p>Crée une table avec phpMyAdmin</p>
+      </section>
+      <section>
+        <h3>Crée une base de données avec phpMyAdmin<img src="img/createBDD.bmp"></h3>
+      </section>
+      <section>
+        <h3 class="bullet">Crée une table "utilisateur" avec phpMyAdmin</h3>
+        <ul>
+          <li>ID (int PRIMARY AUTO_INCREMENT)</li>
+          <li>nom (varchar)</li>
+          <li>prenom (varchar)</li>
+        </ul>
+      </section>
+      <section>
+        <h4 class="bullet">Plusieurs possiblité avec PHP pour se connecter à une BDD</h4>
+        <hr>
+        <ul>
+          <li>Les fonctions <strong>mysql_*</strong></li>
+          <li>Les fonctions <strong>mysqli_*</strong></li>
+          <li>PDO (PHP Data Objects)</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Les fonctions <strong>mysql_*</strong></h2>
+      </section>
+      <section>
+        <h3>Connection à une BDD</h3>
+        <pre><code class="language-javascript">resource mysql_connect ($server, $username, $password);
+</code></pre>
+      </section>
+      <section>
+        <h3>Selection d'une BDD</h3>
+        <pre><code class="language-javascript">bool mysql_select_db ($database_name);
+</code></pre>
+      </section>
+      <section>
+        <h3>Execution d'une Query</h3>
+        <pre><code class="language-javascript">mixed mysql_query ($query);
+</code></pre>
+      </section>
+      <section>
+        <h3>Récupération des erreurs</h3>
+        <pre><code class="language-javascript">string mysql_error ();
+</code></pre>
+      </section>
+      <section>
+        <h3>Ferme la connexion MySQL</h3>
+        <pre><code class="language-javascript">string mysql_close ();
+</code></pre>
+      </section>
+      <section>
+        <h2>SQL INSERTION</h2>
+        <h3>Insérer une ligne en spécifiant toutes les colonnes</h3>
+        <pre><code class="language-javascript">INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...)</code></pre>
+        <h3>Source : <a href="http://sql.sh/cours/insert-into">http://sql.sh/cours/insert-into</a></h3>
+      </section>
+      <section>
+        <h2>SQL INSERTION</h2>
+        <h3>Insérer une ligne en spécifiant seulement les colonnes souhaitées</h3>
+        <pre><code class="language-javascript">INSERT INTO table (nom_colonne_1, nom_colonne_2, ...
+  VALUES ('valeur 1', 'valeur 2', ...)</code></pre>
+        <h3>Source : <a href="http://sql.sh/cours/insert-into">http://sql.sh/cours/insert-into</a></h3>
+      </section>
+      <section>
+        <h2>SQL INSERTION</h2>
+        <h3>Insertion de plusieurs lignes à la fois</h3>
+        <pre><code class="language-javascript">INSERT INTO client (prenom, nom)
+  VALUES
+   ('Rebecca', 'Armand'),
+   ('Aimee', 'Hebert'),
+   ('Marielle', 'Ribeiro'),
+   ('Hilaire', 'Savary');</code></pre>
+        <h3>Source : <a href="http://sql.sh/cours/insert-into">http://sql.sh/cours/insert-into</a></h3>
+      </section>
+      <section>
+        <h2>TD 1</h2>
+        <p>Faire une insertion en BDD avec les élements du formulaire</p>
+        <ul>
+          <li>mysql_connect ($server, $username, $password);</li>
+          <li>mysql_select_db ($database_name);</li>
+          <li>$query = "INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...)";</li>
+          <li>mysql_query ($query);</li>
+          <li>mysql_error ();</li>
+          <li>mysql_close ();</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Les fonctions <strong>mysqli_*</strong></h2>
+      </section>
+      <section>
+        <h3>Connection à une BDD</h3>
+        <h4>Style procédural</h4>
+        <pre><code class="language-javascript">$link = mysqli_connect ($server, $username, $password, $database_name);</code></pre>
+        <h4>Style orienté objet</h4>
+        <pre><code class="language-javascript">$mysqli = new mysqli('localhost', 'fake_user', 'my_password', 'my_db');
+</code></pre>
+      </section>
+      <section>
+        <h3>Récupération des erreurs de connection</h3>
+        <h4>Style procédural</h4>
+        <pre><code class="language-javascript">$link = @mysqli_connect('localhost', 'fake_user', 'my_password', 'my_db');
+if (!$link) {
+    die('Erreur de connexion : ' . mysqli_connect_error());
+}</code></pre>
+        <h4>Style orienté objet</h4>
+        <pre><code class="language-javascript">$mysqli = @new mysqli('localhost', 'fake_user', 'my_password', 'my_db');
+if ($mysqli->connect_error) {
+    die('Erreur de connexion : ' . $mysqli->connect_error);
+}
+</code></pre>
+      </section>
+      <section>
+        <h3>Execution d'une Query</h3>
+        <h4>Style procédural</h4>
+        <pre><code class="language-javascript">$link = mysqli_connect ($server, $username, $password, $database_name);
+mysqli_query($link, $query);</code></pre>
+        <h4>Style orienté objet</h4>
+        <pre><code class="language-javascript">$mysqli = new mysqli($server, $username, $password, $database_name);
+$mysqli->query($query);
+</code></pre>
+      </section>
+      <section>
+        <h3>Récupération des erreurs</h3>
+        <h4>Style procédural</h4>
+        <pre><code class="language-javascript">if (!mysqli_query($link, "SET a=1")) {
+    printf("Message d'erreur : %s\n", mysqli_error($link));
+}</code></pre>
+        <h4>Style orienté objet</h4>
+        <pre><code class="language-javascript">if (!$mysqli->query("SET a=1")) {
+    printf("Message d'erreur : %s\n", $mysqli->error);
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>TD 1</h2>
+        <p>Faire une insertion en BDD avec les élements du formulaire avec mysqli_*</p>
+        <pre><code class="language-javascript">$mysqli = new mysqli($server, $username, $password, $database_name);
+$query = "INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...)";
+$mysqli->query ($query);
+$mysqli->error;
+$mysqli->close();
+</code></pre>
+      </section>
+      <section>
+        <h2>Les fonctions PDO</h2>
+        <h2>(PHP Data Objects)</h2>
+      </section>
+      <section>
+        <h3>Création de l'objet PDO</h3>
+        <pre><code class="language-javascript">$dbh = new PDO($dsn, $user, $password);
+</code></pre>
+      </section>
+      <section>
+        <h3>DSN (Data Source Name)</h3>
+        <p>C'est une structure de donnée utilisée pour décrire une connexion à une source de donnée.</p>
+        <h4>Exemple de DSN Mysql :</h4>
+        <pre><code class="language-javascript">$dsn = "mysql:dbname=MyDataBase;host=127.0.0.1";</code></pre>
+        <h4>Exemple de DSN Java :</h4>
+        <pre><code class="language-javascript">jdbc:sybase://127.0.0.1:700/MyDataBase
+</code></pre>
+      </section>
+      <section>
+        <h3>Préparation d'une requète</h3>
+        <pre><code class="language-javascript">$sql = "INSERT INTO utilisateurs (first_name, last_name) VALUES (:first_name, :last_name)";
+$sth = $dbh->prepare($sql);
+</code></pre>
+      </section>
+      <section>
+        <h3>Execution de requète</h3>
+        <pre><code class="language-javascript">$sth->execute(array(
+  ':first_name' => $first_name,
+  ':last_name' => $last_name
+));
+</code></pre>
+      </section>
+      <section>
+        <h2>TD 1</h2>
+        <p>Faire une insertion en BDD avec les élements du formulaire avec PDO</p><code class="language-javascript">
+          $dsn = "mysql:dbname=MyDataBase;host=127.0.0.1";
+          $dbh = new PDO($dsn, $user, $password);
+          $sql = "INSERT INTO utilisateurs (first_name, last_name) 
+                  VALUES (:first_name, :last_name)";
+          $sth = $dbh->prepare($sql);
+          $sth->execute(array(
+              ':first_name' => $first_name,
+              ':last_name' => $last_name
+          ));
+          $dbh->errorInfo();
+          </code>
+      </section>
+      <section>
+        <h2>SQL SELECT</h2>
+        <h4>Commande basic</h4>
+        <pre><code class="language-javascript">SELECT nom_du_champ FROM nom_du_tableau
+</code></pre>
+      </section>
+      <section>
+        <h3>Obtenir plusieurs colonnes</h3>
+        <pre><code class="language-javascript">SELECT prenom, nom FROM client
+</code></pre>
+      </section>
+      <section>
+        <h3>Obtenir toutes les colonnes d’un tableau</h3>
+        <pre><code class="language-javascript">SELECT * FROM client
+</code></pre>
+      </section>
+      <section>
+        <h3>Ordre des commandes du SELECT</h3>
+        <pre><code class="language-javascript">SELECT *
+FROM table
+WHERE condition
+ORDER BY expression
+LIMIT count
+OFFSET start
+</code></pre>
+      </section>
+      <section>
+        <h2>SQL WHERE</h2>
+        <p>La commande WHERE dans une requête SQL permet d’extraire les lignes d’une base de données qui respectent une condition. Cela permet d’obtenir uniquement les informations désirées.</p>
+        <pre><code class="language-javascript">SELECT nom_colonnes FROM nom_table WHERE condition
+</code></pre>
+      </section>
+      <section>
+        <h3>Opérateurs de comparaisons</h3>
+        <table>
+          <tr>
+            <td>=</td>
+            <td>Égale</td>
+          </tr>
+          <tr>
+            <td><>  </td>
+            <td>Pas égale</td>
+          </tr>
+          <tr>
+            <td>!=  </td>
+            <td>Pas égale</td>
+          </tr>
+          <tr>
+            <td>> </td>
+            <td>Supérieur à</td>
+          </tr>
+          <tr>
+            <td>< </td>
+            <td>Inférieur à</td>
+          </tr>
+          <tr>
+            <td>>= </td>
+            <td>Supérieur ou égale à</td>
+          </tr>
+          <tr>
+            <td><= </td>
+            <td>Inférieur ou égale à</td>
+          </tr>
+          <tr>
+            <td>IN </td>
+            <td>Liste de plusieurs valeurs possibles</td>
+          </tr>
+          <tr>
+            <td>BETWEEN </td>
+            <td>Valeur comprise dans un intervalle donnée</td>
+          </tr>
+          <tr>
+            <td>LIKE </td>
+            <td>Recherche en spécifiant le début, milieu ou fin d'un mot.</td>
+          </tr>
+          <tr>
+            <td>IS NULL </td>
+            <td>Valeur est nulle</td>
+          </tr>
+          <tr>
+            <td>IS NOT NULL </td>
+            <td>Valeur n'est pas nulle</td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>TD 1</h2>
+        <h4>Faire une sélection en BDD avec PDO <br> Afficher le résultat en dessous du formulaire
+          <pre><code class="language-javascript">SELECT nom_du_champ FROM nom_du_tableau</code></pre>
+          <pre><code class="language-javascript">$dbh = new PDO(...);
+$sth = $dbh->prepare($sql);
+$sth->execute();
+$result = $sth->fetchAll();
+print_r($result);
+</code></pre>
+        </h4>
+      </section>
+      <section>
+        <h2>TD 2</h2>
+        <p>A la suite du formulaire crée un 2éme formulaire permettant la recherche d'un utilisateur. Ne faire la recherche que sur les champs saisie.</p>
+        <ul>
+          <li>INPUT nom</li>
+          <li>INPUT prenom</li>
+        </ul>
+        <p>Utiliser LIKE <a href="http://sql.sh/cours/where/like">http://sql.sh/cours/where/like</a></p>
+      </section>
+      <section data-bespoke-state="emphatic">
+        <h2>Emphatic Slide!</h2>
+        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a></h3>
+      </section>
+    </article>
+    <!-- build:js scripts/scripts.js-->
+    <script src="bower_components/bespoke.js/dist/bespoke.min.js"></script>
+    <script src="bower_components/bespoke-keys/dist/bespoke-keys.min.js"></script>
+    <script src="bower_components/bespoke-touch/dist/bespoke-touch.min.js"></script>
+    <script src="bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+    <script src="bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script>
+    <script src="bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+    <script src="bower_components/bespoke-progress/dist/bespoke-progress.min.js"></script>
+    <script src="bower_components/bespoke-state/dist/bespoke-state.min.js"></script>
+    <script src="bower_components/bespoke-forms/dist/bespoke-forms.min.js"></script>
+    <script src="bower_components/prism/prism.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild-->
+  </body>
+</html>
