@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>IP Formation</title>
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" type="text/css" href="../bower_components/prism/themes/prism-tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <!-- endbuild-->
+  </head>
+  <body><a href="/" class="back">Retour</a>
+    <article>
+      <section>
+        <h1>Ajax</h1>
+      </section>
+      <section>
+        <h3>Introduction</h3>
+        <p class="justify">L'architecture informatique Ajax (acronyme d'Asynchronous JavaScript and XML) permet de construire des applications Web et des sites web dynamiques interactifs sur le poste client en se servant de différentes technologies ajoutées aux navigateurs web.</p>
+      </section>
+      <section>
+        <h3>Introduction <span class='small'>-suite-</span></h3>
+        <p class="justify">Ajax combine JavaScript, les CSS, XML, le DOM et le XMLHttpRequest afin d'améliorer maniabilité et confort d'utilisation des Applications Internet Riches (abr. RIA)</p>
+        <hr>
+        <p class="justify">Les applications Ajax fonctionnent sur tous les navigateurs Web courants : Mozilla Firefox, Internet Explorer, Konqueror, Google Chrome, Safari, Opera, etc.</p>
+      </section>
+      <section>
+        <h2>Principe</h2>
+        <p class="justify">En utilisant Ajax, le dialogue entre le navigateur et le serveur se déroule la plupart du temps de la manière suivante : un programme écrit en langage de programmation JavaScript, incorporé dans une page web, est exécuté par le navigateur. Celui-ci envoie en arrière-plan des demandes au serveur Web, puis modifie le contenu de la page actuellement affichée par le navigateur Web en fonction du résultat reçu du serveur, évitant ainsi la transmission et l'affichage d'une nouvelle page complète.</p>
+      </section>
+      <section>
+        <h2>Avantages &amp; Inconvénients</h2>
+        <ul class="justify">
+          <li>Ajax vise à :</li>
+          <li>diminuer les temps de latence,</li>
+          <li>éviter le rechargement de la page,</li>
+          <li>apporter de nouvelles fonctionnalités et</li>
+          <li>augmenter la réactivité de l'application Web.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Plusieurs possibilités</h2>
+        <ul class="justify bullet">
+          <li>XMLHttpRequest</li>
+          <li>jQuery</li>
+          <li>Autre librarie JavaScript</li>
+        </ul>
+      </section>
+      <section>
+        <h3>XMLHttpRequest</h3>
+        <p class="justify">XMLHttpRequest est sans conteste le système AJAX qui offre le plus de marge de manœuvre, mais il se révèle lourd à déployer.</p>
+        <p class="bullet">Points forts</p>
+        <ul class="justify">
+          <li>Adapté pour envoyer une requête qui n'attend pas nécessairement de résultat</li>
+          <li>Adapté pour récupérer des données textuelles et XML</li>
+          <li>Supporté par tous les navigateurs</li>
+          <li>Possibilité de requêtes POST</li>
+        </ul>
+        <p>Points faibles</p>
+        <ul class="justify">
+          <li>Assez lourd à mettre en place et à manipuler</li>
+          <li>L'importation de données au format JSON requiert une compilation avec eval</li>
+        </ul>
+      </section>
+      <section>
+        <p class="justify">Pour les version IE inférieures à 7 requièrent toujours une instanciation via un contrôle ActiveX</p>
+        <pre><code class="language-javascript">function getXMLHttpRequest() {
+    if (window.XMLHttpRequest || window.ActiveXObject) {
+      if (window.ActiveXObject) {
+        try {
+          xhr = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch(e) {
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+      } else {
+        xhr = new XMLHttpRequest(); 
+      }
+    } else {
+      alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+      return;
+    }
+    return xhr;
+}
+</code></pre>
+      </section>
+      <section>
+        <p>Par la suite, pour instancier un objet XHR, il suffira de faire :</p>
+        <pre><code class="language-javascript">var xhr = getXMLHttpRequest();
+</code></pre>
+      </section>
+      <section>
+        <h4>Récupération des données</h4>
+        <p class="justify">Le changement d'état, Il faut savoir que quand on envoie une requête HTTP via XMLHttpRequest, celle-ci passe par plusieurs états différents :</p>
+        <ul class="justify bullet">
+          <li>0 : L'objet XHR a été créé, mais pas encore initialisé (la méthode open n'a pas encore été appelée)</li>
+          <li>1 : L'objet XHR a été créé, mais pas encore envoyé (avec la méthode send )</li>
+          <li>2 : La méthode send vient d'être appelée</li>
+          <li>3 : Le serveur traite les informations et a commencé à renvoyer des données</li>
+          <li>4 : Le serveur a fini son travail, et toutes les données sont réceptionnées</li>
+          <li>On utilise readyState pour connaître l'état de la requête.</li>
+        </ul>
+      </section>
+      <section>
+        <p class="justify">Afin de détecter les changements d'état pour savoir où en est la requête, on va utiliser la propriété `onreadystatechange`</p>
+        <p class="justify">Il faut aussi vérifier le code d'état, on utilise la propriété status.</p>
+        <pre><code class="language-javascript">xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+    //Instruction quand après la récupération des données
+  }
+};</code></pre>
+      </section>
+      <section>
+        <h4>Envoyé une requête Ajax</h4>
+        <p class="justify">On va pour cela utiliser la méthode `open` pour initialisé l'objet XHR et on va utilisé `send` pour l'envoyé au serveur.</p>
+        <pre class="bullet"><code class="language-javascript">var xhr = getXMLHttpRequest(); // Voyez la fonction getXMLHttpRequest() définie dans la partie précédente
+xhr.open("GET", "test.php", true);
+xhr.send(null);</code></pre>
+        <ul class="justify">
+          <li>Méthode open(sMethod, sUrl, bAsync);</li>
+          <li>Méthode send(sData);</li>
+        </ul>
+      </section>
+    </article>
+    <!-- build:js scripts/scripts.js-->
+    <script src="../bower_components/bespoke.js/dist/bespoke.min.js"></script>
+    <script src="../bower_components/bespoke-keys/dist/bespoke-keys.min.js"></script>
+    <script src="../bower_components/bespoke-touch/dist/bespoke-touch.min.js"></script>
+    <script src="../bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+    <script src="../bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script>
+    <script src="../bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+    <script src="../bower_components/bespoke-progress/dist/bespoke-progress.min.js"></script>
+    <script src="../bower_components/bespoke-state/dist/bespoke-state.min.js"></script>
+    <script src="../bower_components/bespoke-forms/dist/bespoke-forms.min.js"></script>
+    <script src="../bower_components/prism/prism.js"></script>
+    <script src="../scripts/main.js"></script>
+    <!-- endbuild-->
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>IP Formation</title>
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" type="text/css" href="../bower_components/prism/themes/prism-tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <!-- endbuild-->
+  </head>
+  <body><a href="/" class="back">Retour</a>
+    <article>
+      <section>
+        <h1>SQL</h1>
+        <h2>Structured Query Language</h2>
+      </section>
+      <section>
+        <h2>Définition</h2>
+        <p class="justify">SQL (sigle de Structured Query Language, en français langage de requête structurée) est un langage informatique normalisé servant à exploiter des bases de données relationnelles. La partie langage de manipulation des données de SQL permet de rechercher, d'ajouter, de modifier ou de supprimer des données dans les bases de données relationnelles.</p>
+      </section>
+      <section>
+        <h2>Outil de développement</h2>
+        <div class="justify">
+          <h4>phpMyAdmin </h4><span>Accès : <a href="pma.project.dev">pma.project.dev</a><br></span><span class="tab-25">application web de gestion de base de données MySQL</span>
+          <hr>
+          <h4>PowerAMC<br></h4><span class="tab-25">logiciel de conception et modélisation de base de données</span>
+          <hr>
+          <h4>MySQL Workbench<br></h4><span class="tab-25">logiciel de gestion et d’administration de bases de données MySQL</span>
+        </div>
+      </section>
+      <section data-bespoke-hash="phpmyadmin">
+        <h2><a href="/modules/phpmyadmin.html">phpMyAdmin</a></h2>
+      </section>
+      <section data-bespoke-hash="cours-sql">
+        <h2>COURS SQL</h2>
+      </section>
+      <section>
+        <h3>SQL INSERTION</h3>
+        <h4>Insérer une ligne en spécifiant toutes les colonnes</h4>
+        <pre><code class="language-javascript">INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...)
+</code></pre>
+      </section>
+      <section>
+        <h4>Insérer une ligne en spécifiant seulement les colonnes souhaitées</h4>
+        <pre><code class="language-javascript">INSERT INTO table (nom_colonne_1, nom_colonne_2, ...
+  VALUES ('valeur 1', 'valeur 2', ...)
+  </code></pre>
+      </section>
+      <section>
+        <h4>Insertion de plusieurs lignes à la fois</h4>
+        <pre><code class="language-javascript">INSERT INTO client (prenom, nom)
+VALUES
+  ('Rebecca', 'Armand'),
+  ('Aimee', 'Hebert'),
+  ('Marielle', 'Ribeiro'),
+  ('Hilaire', 'Savary');</code></pre>
+        <hr>
+        <hr>
+        <blockquote>Source : <a href="http://sql.sh/cours/insert-into">http://sql.sh/cours/insert-into</a></blockquote>
+      </section>
+      <section>
+        <h3>SQL UPDATE</h3>
+        <h4>Commande basic</h4>
+        <pre><code class="language-javascript">UPDATE table
+SET nom_colonne_1 = 'nouvelle valeur'
+WHERE condition
+</code></pre>
+      </section>
+      <section>
+        <h4>Exemple : Modifier une ligne</h4>
+        <pre><code class="language-javascript">UPDATE client
+SET rue = '49 Rue Ameline',
+  ville = 'Saint-Eustache-la-Forêt',
+  code_postal = '76210'
+WHERE id = 2
+</code></pre>
+      </section>
+      <section>
+        <h4>Exemple : Modifier toutes les lignes</h4>
+        <pre><code class="language-javascript">UPDATE client
+SET pays = 'FRANCE'</code></pre>
+        <hr>
+        <hr>
+        <blockquote>Source : <a href="http://sql.sh/cours/update">http://sql.sh/cours/update</a></blockquote>
+      </section>
+      <section>
+        <h2>SQL SELECT</h2>
+        <h4>Commande basic</h4>
+        <pre><code class="language-javascript">SELECT nom_du_champ FROM nom_du_tableau
+</code></pre>
+      </section>
+      <section>
+        <h3>Exemple : Obtenir plusieurs colonnes</h3>
+        <pre><code class="language-javascript">SELECT prenom, nom FROM client
+</code></pre>
+      </section>
+      <section>
+        <h3>Exemple : Obtenir toutes les colonnes d’un tableau</h3>
+        <pre><code class="language-javascript">SELECT * FROM client
+</code></pre>
+      </section>
+      <section>
+        <h3>Ordre des commandes du SELECT</h3>
+        <pre><code class="language-javascript">SELECT *
+FROM table
+WHERE condition
+GROUP BY expression
+HAVING condition
+{ UNION | INTERSECT | EXCEPT }
+ORDER BY expression
+LIMIT count
+OFFSET start</code></pre>
+        <hr>
+        <hr>
+        <blockquote>Source : <a href="http://sql.sh/cours/select">http://sql.sh/cours/select</a></blockquote>
+      </section>
+      <section>
+        <h2>SQL WHERE</h2>
+        <p class="justify">La commande WHERE dans une requête SQL permet d’extraire les lignes d’une base de données qui respectent une condition. Cela permet d’obtenir uniquement les informations désirées.</p>
+        <pre><code class="language-javascript">SELECT nom_colonnes FROM nom_table WHERE condition
+</code></pre>
+      </section>
+      <section>
+        <h3>Opérateurs de comparaisons</h3>
+        <table>
+          <tr>
+            <td>=</td>
+            <td>Égale</td>
+          </tr>
+          <tr>
+            <td><>  </td>
+            <td>Pas égale</td>
+          </tr>
+          <tr>
+            <td>!=  </td>
+            <td>Pas égale</td>
+          </tr>
+          <tr>
+            <td>> </td>
+            <td>Supérieur à</td>
+          </tr>
+          <tr>
+            <td>< </td>
+            <td>Inférieur à</td>
+          </tr>
+          <tr>
+            <td>>= </td>
+            <td>Supérieur ou égale à</td>
+          </tr>
+          <tr>
+            <td><= </td>
+            <td>Inférieur ou égale à</td>
+          </tr>
+          <tr>
+            <td>IN </td>
+            <td>Liste de plusieurs valeurs possibles</td>
+          </tr>
+          <tr>
+            <td>BETWEEN </td>
+            <td>Valeur comprise dans un intervalle donnée</td>
+          </tr>
+          <tr>
+            <td>LIKE </td>
+            <td>Recherche en spécifiant le début, milieu ou fin d'un mot.</td>
+          </tr>
+          <tr>
+            <td>IS NULL </td>
+            <td>Valeur est nulle</td>
+          </tr>
+          <tr>
+            <td>IS NOT NULL </td>
+            <td>Valeur n'est pas nulle</td>
+          </tr>
+        </table>
+        <hr>
+        <hr>
+        <blockquote>Source : <a href="http://sql.sh/cours/where">http://sql.sh/cours/where</a></blockquote>
+      </section>
+    </article>
+    <!-- build:js scripts/scripts.js-->
+    <script src="../bower_components/bespoke.js/dist/bespoke.min.js"></script>
+    <script src="../bower_components/bespoke-keys/dist/bespoke-keys.min.js"></script>
+    <script src="../bower_components/bespoke-touch/dist/bespoke-touch.min.js"></script>
+    <script src="../bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+    <script src="../bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script>
+    <script src="../bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+    <script src="../bower_components/bespoke-progress/dist/bespoke-progress.min.js"></script>
+    <script src="../bower_components/bespoke-state/dist/bespoke-state.min.js"></script>
+    <script src="../bower_components/bespoke-forms/dist/bespoke-forms.min.js"></script>
+    <script src="../bower_components/prism/prism.js"></script>
+    <script src="../scripts/main.js"></script>
+    <!-- endbuild-->
+  </body>
+</html>

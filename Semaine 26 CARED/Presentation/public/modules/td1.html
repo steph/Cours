@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>IP Formation</title>
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" type="text/css" href="../bower_components/prism/themes/prism-tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <!-- endbuild-->
+  </head>
+  <body><a href="/" class="back">Retour Index</a>
+    <article>
+      <section>
+        <h1>TD1</h1>
+        <h2>Création d'une inscription "Utilisateur</h2>
+      </section>
+      <section>
+        <h3>a. Crée une BDD "socle" avec phpMyAdmin</h3>
+      </section>
+      <section>
+        <h3>b. Crée une table "utilisateur" avec phpMyAdmin</h3><span>ID (int PRIMARY AUTO_INCREMENT)</span>
+        <hr><span>nom (varchar)</span>
+        <hr><span>prenom (varchar)</span>
+      </section>
+      <section data-bespoke-hash="c">
+        <h3>c. Crée un formulaire PhP avec les champs</h3><span>nom</span>
+        <hr><span>prenom</span>
+        <hr><a href="#correctionc" class="corrige">Corrigé</a>
+      </section>
+      <section data-bespoke-hash="d">
+        <h3>d. Faire une insertion en BDD</h3><span>Avec mysql_</span><span>Avec mysqli_</span><span>Avec PDO</span><a href="#correctiond" class="corrige">Corrigé</a>
+      </section>
+      <section>
+        <h2>Correction</h2>
+      </section>
+      <section data-bespoke-hash="correctionc">
+        <h2>Correction</h2>
+        <pre><code class="language-javascript">&lt;form method=&quot;POST&quot; action=&quot;valid.php&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;nom&quot; /&gt;
+  &lt;input type=&quot;text&quot; name=&quot;prenom&quot; /&gt;
+  &lt;input type=&quot;submit&quot; /&gt;
+&lt;/form&gt;</code></pre><a href="#c" class="enonce">Enonce</a>
+      </section>
+      <section data-bespoke-hash="correctiond">
+        <h2>Correction avec mysql_</h2>
+        <pre><code class="language-javascript">&lt;?php 
+  mysql_connect ($server, $username, $password);
+  mysql_select_db ($database_name);
+  $query = &quot;INSERT INTO table VALUES (NULL, $name, $prenom)&quot;;
+  mysql_query ($query);
+  if (mysql_error ()) {
+    die 'Erreur de requète : ' . mysql_error ();
+  };
+  mysql_close ();
+?&gt;</code></pre><a href="#d" class="enonce">Enonce</a>
+      </section>
+      <section>
+        <h2>Correction avec mysqli_</h2>
+        <pre><code class="language-javascript">&lt;?php 
+  $mysqli = new mysqli($server, $username, $password, $database_name);
+  $query = &quot;INSERT INTO table VALUES (NULL, $name, $prenom)&quot;;
+  $mysqli-&gt;query ($query);
+  if ($mysqli-&gt;error) {
+    die 'Erreur de requète : ' . mysql_error ();
+  };
+  $mysqli-&gt;close();
+?&gt;</code></pre><a href="#d" class="enonce">Enonce</a>
+      </section>
+      <section>
+        <h2>Correction avec PDO</h2>
+        <pre><code class="language-javascript">&lt;?php 
+  $dsn = &quot;mysql:dbname=MyDataBase;host=127.0.0.1&quot;;
+  $dbh = new PDO($dsn, $user, $password);
+  $sql = &quot;INSERT INTO utilisateurs (nom, prenom) 
+          VALUES (:nom, :prenom)&quot;;
+  $sth = $dbh-&gt;prepare($sql);
+  $sth-&gt;execute(array(
+      ':nom' =&gt; $nom,
+      ':prenom' =&gt; $prenom
+  ));
+  if ($dbh-&gt;errorCode()) {
+    die 'Erreur de requète : ' . $dbh-&gt;errorInfo();
+  }
+?&gt;</code></pre><a href="#d" class="enonce">Enonce</a>
+      </section>
+      <section></section>
+    </article>
+    <!-- build:js scripts/scripts.js-->
+    <script src="../bower_components/bespoke.js/dist/bespoke.min.js"></script>
+    <script src="../bower_components/bespoke-keys/dist/bespoke-keys.min.js"></script>
+    <script src="../bower_components/bespoke-touch/dist/bespoke-touch.min.js"></script>
+    <script src="../bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+    <script src="../bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script>
+    <script src="../bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+    <script src="../bower_components/bespoke-progress/dist/bespoke-progress.min.js"></script>
+    <script src="../bower_components/bespoke-state/dist/bespoke-state.min.js"></script>
+    <script src="../bower_components/bespoke-forms/dist/bespoke-forms.min.js"></script>
+    <script src="../bower_components/prism/prism.js"></script>
+    <script src="../scripts/main.js"></script>
+    <!-- endbuild-->
+  </body>
+</html>

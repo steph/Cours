@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>IP Formation</title>
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" type="text/css" href="../bower_components/prism/themes/prism-tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <!-- endbuild-->
+  </head>
+  <body><a href="/" class="back">Retour</a>
+    <article>
+      <section>
+        <h1>PHP</h1>
+      </section>
+      <section data-bespoke-hash="php-sql">
+        <h2>PHP et SQL</h2>
+      </section>
+      <section>  
+        <h3 class="bullet">Plusieurs possiblité avec PHP pour se connecter à une BDD</h3>
+        <hr>
+        <ul>
+          <li>Les fonctions <strong>mysql_*</strong></li>
+          <li>Les fonctions <strong>mysqli_*</strong></li>
+          <li>PDO (PHP Data Objects)</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Les fonctions <strong>mysql_*</strong></h3>
+      </section>
+      <section>
+        <h4>Connection à une BDD</h4>
+        <pre><code class="language-javascript">resource mysql_connect ($server, $username, $password);
+</code></pre>
+      </section>
+      <section>
+        <h4>Selection d'une BDD</h4>
+        <pre><code class="language-javascript">bool mysql_select_db ($database_name);
+</code></pre>
+      </section>
+      <section>
+        <h4>Execution d'une Query</h4>
+        <pre><code class="language-javascript">mixed mysql_query ($query);
+</code></pre>
+      </section>
+      <section>
+        <h4>Récupération des erreurs</h4>
+        <pre><code class="language-javascript">string mysql_error ();
+</code></pre>
+      </section>
+      <section>
+        <h4>Ferme la connexion MySQL</h4>
+        <pre><code class="language-javascript">string mysql_close ();
+</code></pre>
+      </section>
+      <section>
+        <h3>Les fonctions <strong>mysqli_*</strong></h3>
+      </section>
+      <section>
+        <h4>Connection à une BDD</h4>
+        <h5>Style procédural</h5>
+        <pre><code class="language-javascript">$link = mysqli_connect ($server, $username, $password, $database_name);</code></pre>
+        <h5>Style orienté objet</h5>
+        <pre><code class="language-javascript">$mysqli = new mysqli('localhost', 'fake_user', 'my_password', 'my_db');
+</code></pre>
+      </section>
+      <section>
+        <h4>Récupération des erreurs de connection</h4>
+        <h5>Style procédural</h5>
+        <pre><code class="language-javascript">$link = @mysqli_connect('localhost', 'fake_user', 'my_password', 'my_db');
+if (!$link) {
+    die('Erreur de connexion : ' . mysqli_connect_error());
+}</code></pre>
+        <h5>Style orienté objet</h5>
+        <pre><code class="language-javascript">$mysqli = @new mysqli('localhost', 'fake_user', 'my_password', 'my_db');
+if ($mysqli->connect_error) {
+    die('Erreur de connexion : ' . $mysqli->connect_error);
+}
+</code></pre>
+      </section>
+      <section>
+        <h4>Execution d'une Query</h4>
+        <h5>Style procédural</h5>
+        <pre><code class="language-javascript">$link = mysqli_connect ($server, $username, $password, $database_name);
+mysqli_query($link, $query);</code></pre>
+        <h5>Style orienté objet</h5>
+        <pre><code class="language-javascript">$mysqli = new mysqli($server, $username, $password, $database_name);
+$mysqli->query($query);
+</code></pre>
+      </section>
+      <section>
+        <h4>Récupération des erreurs</h4>
+        <h5>Style procédural</h5>
+        <pre><code class="language-javascript">if (!mysqli_query($link, "SET a=1")) {
+    printf("Message d'erreur : %s\n", mysqli_error($link));
+}</code></pre>
+        <h5>Style orienté objet</h5>
+        <pre><code class="language-javascript">if (!$mysqli->query("SET a=1")) {
+    printf("Message d'erreur : %s\n", $mysqli->error);
+}
+</code></pre>
+      </section>
+      <section>
+        <h3>Les fonctions PDO (PHP Data Objects)</h3>
+      </section>
+      <section>
+        <h4>Création de l'objet PDO</h4>
+        <pre><code class="language-javascript">$dbh = new PDO($dsn, $user, $password);
+</code></pre>
+      </section>
+      <section>
+        <h4>DSN (Data Source Name)</h4>
+        <p>C'est une structure de donnée utilisée pour décrire une connexion à une source de donnée.</p>
+        <h5>Exemple de DSN Mysql :</h5>
+        <pre><code class="language-javascript">$dsn = "mysql:dbname=MyDataBase;host=127.0.0.1";</code></pre>
+        <h5>Exemple de DSN Java :</h5>
+        <pre><code class="language-javascript">jdbc:sybase://127.0.0.1:700/MyDataBase
+</code></pre>
+      </section>
+      <section>
+        <h4>Préparation d'une requète</h4>
+        <pre><code class="language-javascript">$sql = "INSERT INTO utilisateurs (first_name, last_name) VALUES (:first_name, :last_name)";
+$sth = $dbh->prepare($sql);
+</code></pre>
+      </section>
+      <section>
+        <h4>Execution de requète</h4>
+        <pre><code class="language-javascript">$sth->execute(array(
+  ':first_name' => $first_name,
+  ':last_name' => $last_name
+));</code></pre>
+      </section>
+      <section></section>
+    </article>
+    <!-- build:js scripts/scripts.js-->
+    <script src="../bower_components/bespoke.js/dist/bespoke.min.js"></script>
+    <script src="../bower_components/bespoke-keys/dist/bespoke-keys.min.js"></script>
+    <script src="../bower_components/bespoke-touch/dist/bespoke-touch.min.js"></script>
+    <script src="../bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+    <script src="../bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script>
+    <script src="../bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+    <script src="../bower_components/bespoke-progress/dist/bespoke-progress.min.js"></script>
+    <script src="../bower_components/bespoke-state/dist/bespoke-state.min.js"></script>
+    <script src="../bower_components/bespoke-forms/dist/bespoke-forms.min.js"></script>
+    <script src="../bower_components/prism/prism.js"></script>
+    <script src="../scripts/main.js"></script>
+    <!-- endbuild-->
+  </body>
+</html>

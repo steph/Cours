@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>IP Formation</title>
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" type="text/css" href="../bower_components/prism/themes/prism-tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <!-- endbuild-->
+  </head>
+  <body><a href="/modules/sql.html#phpmyadmin" class="back">Retour SQL</a>
+    <article>
+      <section><img src="../img/phpmyadmin_logo.png"></section>
+      <section>
+        <h2>Description</h2>
+        <p class="justify">phpMyAdmin (PMA) est une application Web de gestion pour les systèmes de gestion de base de données MySQL réalisée en PHP et distribuée sous licence GNU GPL.</p>
+      </section>
+      <section>
+        <h3>Crée une Base de données avec phpMyAdmin</h3>
+        <ol class="justify">
+          <li>Sélectionner l'onglet Base de données</li>
+          <li>Insérer le nom de votre BDD dans le champs de saisie</li>
+          <li>Créer</li>
+        </ol><img src="../img/createBDD.bmp" height="250px">
+      </section>
+      <section>
+        <h3>Sécurité</h3>
+        <p class="justify large">Il est recommandé de crée un utilisateur par BDD.</p>
+      </section>
+      <section>
+        <ol class="justify">
+          <li>Sélectionner l'onglet Privilèges</li>
+          <li>Cliquez sur le lien Ajouter un utilisateur</li>
+          <li>Saisir le Nom d'utilisateur</li>
+          <li>Saisir le client* "Local"</li>
+          <li>Saisir un Mot de passe</li>
+          <li>Sélectionner "Crée une base portant ..."</li>
+        </ol><img src="../img/CreateUser.png" height="200px">
+      </section>
+      <section>
+        <h3>Crée une Table avec phpMyAdmin</h3>
+        <ol class="justify">
+          <li>Sélectionner votre BDD</li>
+          <li>Cliquez sur Nouvelle table ou
+            <hr>
+            <ul>
+              <li>Saisir le nom de la table</li>
+              <li>Saisir le nombre de colonne</li>
+              <li>Exécuter</li>
+            </ul>
+          </li>
+        </ol><img src="../img/CreateTable.png" width="400px">
+      </section>
+      <section>
+        <h3>Création de table <span class="small">-suite-</span></h3>
+        <ol class="justify">
+          <li>Saisir le nom de la table</li>
+          <li>Saisir les données pour une colonne</li>
+          <li>Sélectionner le Moteur de stockage</li>
+          <li>Sélection l'interclassement</li>
+          <li>Si besoin rajouter des colonnes</li>
+          <li>Exécuter</li>
+        </ol>
+        <blockquote>Image slide suivant</blockquote>
+      </section>
+      <section>
+        <h3>Création de table <span class="small">-suite-</span></h3><img src="../img/CreateTableColumn.png" width="400px">
+      </section>
+      <section>
+        <h3>Faire des requètes SQL</h3>
+        <p class="justify">Pour faire des requètes SQL, Sélectionner votre BDD puis l'onglet SQL. Les requètes effectué seront faites sur la BDD choisi.</p><img src="../img/FenetreSQL.png" width="400px">
+      </section>
+      <section>
+        <h2><a href="sql.html#cours-sql">Cours Sql</a></h2>
+      </section>
+    </article>
+    <!-- build:js scripts/scripts.js-->
+    <script src="../bower_components/bespoke.js/dist/bespoke.min.js"></script>
+    <script src="../bower_components/bespoke-keys/dist/bespoke-keys.min.js"></script>
+    <script src="../bower_components/bespoke-touch/dist/bespoke-touch.min.js"></script>
+    <script src="../bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+    <script src="../bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script>
+    <script src="../bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+    <script src="../bower_components/bespoke-progress/dist/bespoke-progress.min.js"></script>
+    <script src="../bower_components/bespoke-state/dist/bespoke-state.min.js"></script>
+    <script src="../bower_components/bespoke-forms/dist/bespoke-forms.min.js"></script>
+    <script src="../bower_components/prism/prism.js"></script>
+    <script src="../scripts/main.js"></script>
+    <!-- endbuild-->
+  </body>
+</html>
